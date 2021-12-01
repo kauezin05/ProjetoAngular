@@ -1,0 +1,16 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Curso de Angular",
+      "validade": "2021-12-31",
+      "precoProduto": 550.54
+    },
+    {
+      "nome": "Curso de Angular Avançado",
+      "validade": "2021-12-31",
+      "precoProduto": 750.54,
+      "id": 2
+    }
+  ]
+}

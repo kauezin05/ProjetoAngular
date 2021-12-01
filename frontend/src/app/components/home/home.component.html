@@ -1,0 +1,52 @@
+<!--Classe PAi-->
+<br>
+<h1>Seja bem vindo ao curso de Angular!</h1>
+
+<br>
+
+<h4 class="text-danger">{{anuncio}}</h4> <!--Utilização de interpolação = {{variavel}}-->
+<br>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <app-card-produto
+
+      [foto]="foto"
+      [nomeProduto]="nomeProduto"
+      [promocao]="promocao"
+      [idProduto]="idProduto"
+      [datavalidade]="datavalidade"
+      [precoProduto]="precoProduto"
+
+
+    ></app-card-produto>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card border-0 shadow">
+      <h4 class="card-title text-center bg-warning">Outros cursos</h4>
+      <table class="table table-responsive table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Validade</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor = "let prod of ListaProdutos">
+            <td>{{ prod.id }}</td>
+            <td>{{ prod.nome }}</td>
+            <td>{{ prod.validade | date: "shortDate"}}</td>
+            <td>{{ prod.precoProduto | currency: "BRL" }}</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+</div>

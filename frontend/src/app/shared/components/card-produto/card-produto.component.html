@@ -1,0 +1,17 @@
+<!--Classe filha-->
+  <div class="card" style="width: 18rem;">
+    <img [src]="foto" class="card-img-top" alt="..."><!--Ex de data-bidingd de property-->
+    <div class="card-body">
+      <h5 class="card-title">{{nomeProduto | uppercase}}</h5>
+      <span *ngIf="promocao; else elseBlock" class="badge badge-success">Promoção</span><!--Ex de ngIf, de verdade ou falso-->
+      <ng-template #elseBlock>
+        <span class="badge badge-primary">Aproveite</span>
+      </ng-template>
+      <p class="card-text">
+        Indentificação: {{idProduto | number: '2.0-0'}}<!--Ex de data-binding de interpolação--> <!--data-binding = ligação de dados-->
+    <br>
+        Validade: {{datavalidade | date: 'shortDate'}}
+      </p>
+      <a href="#" class="btn btn-primary">{{precoProduto | currency: 'BRL' }}</a>
+    </div>
+  </div>

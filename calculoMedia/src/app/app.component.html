@@ -1,0 +1,123 @@
+<!--HEADER-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary ">
+  <a class="navbar-brand" href="#">Calcular média de notas</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/"><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-danger my-2 my-sm-0" type="submit">SAIR</button>
+    </form>
+  </div>
+</nav>
+
+<!--FIM DO HEADER-->
+
+<!--CORPO-->
+<br>
+<br>
+<br>
+<div class="container" align="center" ><!--Div para alinhamento-->
+  <div class="card text-center border" style="width: 45rem; border-radius: 30px;" ><!--Card-->
+    <h4 class="card-header bg-secondary text-white">Calcular média</h4><!--Título do card-->
+
+    <div *ngIf="media >= 7; else elseBlock1"><!--Inicio ngIf--><!--If Aprovado-->
+      <div class="col-xs-6 col-md-3  container">
+        <img [src]="FotoVerde" class="card-img-top" alt="...">
+      </div>
+    </div>
+
+    <ng-template #elseBlock1><!--else Reprovado-->
+      <div class="col-xs-6 col-md-3  container">
+        <img [src]="FotoVermelha" class="card-img-top" alt="...">
+      </div>
+    </ng-template>
+
+    <hr>
+
+    <div class="card-body container"><!--Corpo do card-->
+      <form><!--Form-->
+        <div class="form-group col-md-3" > <!--Exibir RMA-->
+          <label for="formGroupExampleInput4">RM: {{codigoRMA}}</label>
+        </div>
+
+        <div class="form-group col-md-6"><!--Exibir Nome-->
+          <label for="formGroupExampleInput4">Nome: {{nome}}</label>
+        </div>
+
+        <hr>
+
+        <h5 class="bg-warning text-dark col-md-7 container" style="border-radius: 10px;"><!--Exibir Nota e a Data da ultima atualização-->
+           NOTAS<h6> Ultima Atualização: {{data | date: 'shortDate'}}</h6>
+        </h5>
+        <br>
+        <br>
+
+        <div class="row"><!--Uma linha para as notas 1 e 2-->
+
+          <div class="form-group col-md-2 container"><!--Nota 1-->
+            <label for="formGroupExampleInput">1° Nota:
+              <span class="badge rounded-pill bg-warning text-dark">{{nota1}}</span>
+            </label>
+          </div>
+
+          <div class=" col-md-2 form-group container"><!--Nota 2-->
+            <label for="formGroupExampleInput2">2° Nota:
+              <span class="badge rounded-pill bg-warning text-dark">{{nota2}}</span>
+            </label>
+          </div>
+
+        </div><!--Fim da row-->
+
+        <div class="row"><!--Uma linhas para as notas 3 e 4-->
+
+          <div class="form-group col-md-2 container"><!--Nota 3-->
+            <label for="formGroupExampleInput3">3° Nota:
+              <span class="badge rounded-pill bg-warning text-dark">{{nota3}}</span>
+            </label>
+          </div>
+
+          <div class="form-group col-md-2 container"><!--Nota 4-->
+            <label for="formGroupExampleInput4">4° Nota:
+              <span class="badge rounded-pill bg-warning text-dark">{{nota4}}</span>
+            </label>
+          </div>
+
+        </div><!--Fim da row-->
+
+        <div *ngIf="media >= 7; else elseBlock2"><!--Inicio ngIf--><!--If Aprovado-->
+          <div class="form-group col-md-6  container alert alert-success" style="border-radius: 20px;">
+            <label for="formGroupExampleInput4">Média Final = {{media}} | APROVADO</label>
+          </div>
+        </div>
+
+        <ng-template #elseBlock2><!--else Reprovado-->
+          <div class="form-group col-md-6  container alert alert-danger" style="border-radius: 20px;">
+            <label for="formGroupExampleInput4">Média Final = {{media}} | REPROVADO</label>
+          </div>
+        </ng-template><!--Fim ngIf-->
+
+        <div class="col-auto my-1 col-md-6 container"><!--Botão para calcular-->
+          <button type="submit" class="btn btn-secondary btn-sm" style="border-radius: 25px;">
+          <strong><h5>Calcular</h5></strong>
+          </button>
+        </div>
+
+      </form> <!--Fim do Form-->
+    </div><!--Fim do Corpo do card-->
+  </div> <!--Fim do Card-->
+</div><!--Fim da Div para alinhamento-->
+<!--FIM DO CORPO-->
+
+
+  <router-outlet></router-outlet>
+
