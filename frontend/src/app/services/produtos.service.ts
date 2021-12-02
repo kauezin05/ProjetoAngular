@@ -27,6 +27,29 @@ export class ProdutosService {
 
   }
 
+  buscarPorId(id: number) : Observable<IProduto> {
+    return this.http.get<IProduto>(`${this.URL}/${id}`).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirErro(erro))
+    );
+  }
+
+
+  atualizar( produto: IProduto): Observable<IProduto> {
+    return this.http.put<IProduto>(`${this.URL}/${produto.id}`, produto).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirErro(erro))
+    );
+  }
+
+  excluir( id: number): Observable<any> {
+    return this.http.delete<any>(`${this.URL}/${id}`).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibirErro(erro))
+    );
+  }
+
+
   cadastrar( produto: IProduto): Observable<IProduto> {
     return this.http.post<IProduto>(this.URL, produto).pipe(
       map(retorno => retorno),
@@ -40,6 +63,7 @@ export class ProdutosService {
     this.exibirMensagem('Erro!', 'Não foi possivel realizar a operação', 'toast-error');
     return EMPTY; //retornar nada (essa função serve para ultilizar o Observable, pois quando não é void ele precisa que retorne algo)
   }
+
   exibirMensagem(titulo: string, mensagem: string, tipo: string) : void {
 
     this.toastr.show(mensagem, titulo, {closeButton: true, progressBar: true}, tipo);

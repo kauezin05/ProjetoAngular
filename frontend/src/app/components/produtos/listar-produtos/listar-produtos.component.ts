@@ -54,4 +54,22 @@ export class ListarProdutosComponent implements OnInit {
     })
   };
 
+  //é preciso de ! depois do id, pois o id pode ser null
+  deletar(produto: IProduto) : void {
+
+    this.produtosService.excluir(produto.id!).subscribe(() => {
+
+      this.produtosService.exibirMensagem(
+
+        'Sistema',
+
+        `${produto.nome} foi excluido com sucesso.`,
+
+        'toast-success'
+
+      );
+
+    });
+  };
+
 }
