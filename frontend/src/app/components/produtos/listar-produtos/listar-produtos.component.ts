@@ -68,7 +68,7 @@ export class ListarProdutosComponent implements OnInit {
         'toast-success'
 
       );
-
+      this.carregarProdutos();
     });
   };
 

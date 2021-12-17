@@ -28,7 +28,7 @@ export class AtualizarProdutoComponent implements OnInit {
     const id = Number(this.activatedRouter.snapshot.paramMap.get('id'));
     this.produtosService.buscarPorId(id).subscribe(retorno => {
       this.produto = retorno;
-    })
+    });
   }
 
   salvarProduto(): void {
